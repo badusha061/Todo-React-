@@ -6,6 +6,18 @@ export const EditTodoform = ({editTodo , task}) => {
 
   const handleSubmit = (e) => {
       e.preventDefault();
+      const valuetrim = value.trim(); 
+        
+      if (valuetrim === ''){
+        Swal.fire({
+          icon: 'info',
+          title: 'Please Enter Task.',
+          showConfirmButton: false,
+          timer: 1500, 
+        });
+        return;
+      }
+
       if (value.trim() !== task.task.trim()){
         editTodo(value , task.id)
         Swal.fire({
@@ -15,14 +27,16 @@ export const EditTodoform = ({editTodo , task}) => {
           timer: 1500, 
         });
       } else {
+        console.log("no changing made")
         Swal.fire({
           icon: 'info',
           title: 'No changes made.',
           showConfirmButton: false,
           timer: 1500, 
         });
+        return ;
       }
-
+      
       setValue('');
   }
   return (

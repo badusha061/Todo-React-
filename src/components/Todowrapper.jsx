@@ -36,6 +36,10 @@ export const Todowrapper = () => {
   const editTodo = (id) => {
     setTodo(todo.map(todoItem => todoItem.id === id ? {...todoItem , isEditing: !todoItem.isEditing} : todoItem ))
   }
+
+  const editTask = (task, id) => [
+    setTodo(todo.map(todoItem => todoItem.id === id ? {...todoItem , task , isEditing: !todoItem.isEditing}:todoItem ))
+  ]
   return (
     <div className='TodoWrapper'>
       <h1>Get Things Done!</h1>
@@ -43,9 +47,9 @@ export const Todowrapper = () => {
 
       {todo.map((todoItem, index) => (
         todoItem.isEditing ? (
-          <EditTodoform key={index} editTodo={editTodo} task={todoItem} />
+          <EditTodoform  key={`edit-${todoItem.id}`} editTodo={editTask} task={todoItem} />
         ): (
-          <Todo task={todoItem} key={index} toggleComplete ={toggleComplete} deleteTodo = {deleteTodo} editTodo = {editTodo} />
+          <Todo task={todoItem} key={todoItem.id} toggleComplete ={toggleComplete} deleteTodo = {deleteTodo} editTodo = {editTodo} />
         )        
       ))} 
     </div>
