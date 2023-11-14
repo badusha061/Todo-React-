@@ -20,6 +20,14 @@ export const Todowrapper = () => {
         text: 'Task cannot be empty!',
       });
       return;
+    }else{
+
+      Swal.fire({
+        icon: 'success',
+        title: 'Task added!',
+        text: 'Your task has been successfully added.',
+      });
+      
     }
 
     setTodo([...todo, { id: uuidv4(), task: trimtask, completed: false, isEditing: false }]);
