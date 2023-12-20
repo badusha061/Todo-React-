@@ -27,7 +27,6 @@ export const EditTodoform = ({editTodo , task}) => {
           timer: 1500, 
         });
       } else {
-        console.log("no changing made")
         Swal.fire({
           icon: 'info',
           title: 'No changes made.',
